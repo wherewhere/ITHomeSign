@@ -1,5 +1,5 @@
 # 实现 github actions 自动化签到
-fork 一份代码到自己仓库，然后在 https://github.com/daimiaopeng/IthomeQianDao/settings/secrets/actions/new 用户名换成你自己的，添加密钥里面添加USERNAME和PASSWORD  
+fork 一份代码到自己仓库，然后在 https://github.com/daimiaopeng/IthomeQianDao/settings/secrets/actions/new 用户名换成你自己的，添加密钥里面添加 USERNAME 和 PASSWORD  
 每天早上 1 点自动签到
 
 ## 截止2022年12月14日17:37:15签到代码仍是可用的
@@ -16,7 +16,7 @@ fork 一份代码到自己仓库，然后在 https://github.com/daimiaopeng/Itho
 
 ### 理清思路
 
-加密方式肯定没变，只不过是密钥变了，既然是web，那当然可以调试，所以想到了反编译小程序，然后通过小程序调试获取密钥。
+加密方式肯定没变，只不过是密钥变了，既然是 web，那当然可以调试，所以想到了反编译小程序，然后通过小程序调试获取密钥。
 
 ### 通过小程序获取密钥
 
@@ -35,7 +35,7 @@ fork 一份代码到自己仓库，然后在 https://github.com/daimiaopeng/Itho
 通过 Fiddle 断点替换 js，js 代码`'endt': _0x5e2efb['wMjTQ'](getEncryptStr)`改为`getEncryptStr`，然后通过 url 中的 endt 字段获取密钥，因为之前以为这个是待的加密文本所以 endt 没有变化，以为失败了就没再尝试，如果换成`getEncryptKey()`应该会有变化
 
 ## 简介
-IT之家签到程序，~~可多次请求 api 获取上百金币，api链接中 coinHistoryType 字段为添加金币途径，设置为不同值就可以添加不同途径金币收入，具体收入明细可以去 app 中查看。(暂且失效)~~
+IT之家签到程序，~~可多次请求 api 获取上百金币，api 链接中 coinHistoryType 字段为添加金币途径，设置为不同值就可以添加不同途径金币收入，具体收入明细可以去 app 中查看。(暂且失效)~~
 
 安装 python3，再在 cmd 里输入`pip install requests` `pip install Crypto` 然后改动代码里用户名和密码就可以了。
 
@@ -45,7 +45,7 @@ IT之家签到程序，~~可多次请求 api 获取上百金币，api链接中 c
 
 ### 加密方法
 
-DES 加密，密钥为：`qs$^w<4!`，填充方式：`zeropadding`，输出方式： `hex`，加密代码见 run.py 中的 getHash 函数(长字符串会失效，因为没有填充到合适的位数，以后更新)
+DES 加密，密钥为：`qs$^w<4!`，填充方式：`zeropadding`，输出方式：`hex`，加密代码见 run.py 中的 getHash 函数(长字符串会失效，因为没有填充到合适的位数，以后更新)
 
 其它加密的密钥为：`(#i@x*l%`
 

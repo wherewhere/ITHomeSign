@@ -10,7 +10,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  ithome_sign:
+  ithome-sign:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,3 +27,10 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           USERHASH: ${{ secrets.USERHASH }}
         run: python run.py
+  workflow-keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: liskin/gh-workflow-keepalive@v1
