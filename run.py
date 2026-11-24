@@ -28,7 +28,7 @@ def getUserHash(username: str, password: str):
     return user_hash
 
 
-def getSingInfo(user_hash: str):
+def getSignInfo(user_hash: str):
     session = requests.session()
     session.trust_env = False
     try:
@@ -81,7 +81,7 @@ def getUserHashFromEnv():
 
 if __name__ == "__main__":
     user_hash = getUserHashFromEnv()
-    isSign = getSingInfo(user_hash)
+    isSign = getSignInfo(user_hash)
     if isSign:
         print("已经签到过了")
     else:
